@@ -7,7 +7,6 @@ import os.path
  #   text_input = st.text_input(label='Enter your name')
   #  submit_button = st.form_submit_button(label='Submit')
 
-
 urls =[]
 sistemas = ['esadmin','stp','scf','srh','stm']
 with st.beta_expander("Cadastrar Url"):
