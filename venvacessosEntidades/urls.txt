@@ -8,4 +8,3 @@ http://fernandespinheiropr.equiplano.com.br:7474/
 http://camaramissalpr.equiplano.com.br:7474/
 http://camaranovalaranjeiraspr.equiplano.com.br:7474/
 http://palmitalpr.equiplano.com.br:7474/
-http://pmsjorgepr.equiplano.com.br:7474/
