@@ -8,12 +8,6 @@ import os.path
   #  submit_button = st.form_submit_button(label='Submit')
 
 
-if(os.path.exists('urls.txt')):
-    pass
-else:
-    txt = open('urls.txt', "w")
-    txt.close()
-
 urls =[]
 sistemas = ['esadmin','stp','scf','srh','stm']
 with st.beta_expander("Cadastrar Url"):
