@@ -1,10 +1,18 @@
 import requests
 import streamlit as st
 from time import sleep as s
+import os.path
 
 #with st.form(key='my_form'):
  #   text_input = st.text_input(label='Enter your name')
   #  submit_button = st.form_submit_button(label='Submit')
+
+
+if(os.path.exists('urls.txt')):
+    pass
+else:
+    txt = open('urls.txt', "w")
+    txt.close()
 
 urls =[]
 sistemas = ['esadmin','stp','scf','srh','stm']
@@ -13,8 +21,6 @@ with st.beta_expander("Cadastrar Url"):
     if st.button("Gravar"):
         if urls != "":
             arquivo = open('urls.txt','r')
-            # historico = open('urls.txt','r')
-
             for line in arquivo:
                 if urls in line:
                     st.warning('Url já cadastrada, verifique a lista de entidades.')
