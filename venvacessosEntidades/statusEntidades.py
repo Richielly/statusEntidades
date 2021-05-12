@@ -46,4 +46,4 @@ if st.button("Verificação Geral") :
         if (resposta.status_code == 200):
             st.success("Entidade: " + url + " no Ar.")
         else:
-            st.error("Entidade: " + url + " fora do Ar ou sem licença.")
+            st.error("Entidade: " + url + " fora do Ar ou sem licença encontrada.")
