@@ -1,5 +1,0 @@
-http://riobrancodosulpr.equiplano.com.br:7474/
-<<<<<<< HEAD
-http://balsanovapr.equiplano.com.br:7474/
-=======
->>>>>>> origin/master
