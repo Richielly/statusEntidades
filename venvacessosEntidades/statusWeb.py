@@ -19,6 +19,7 @@ if st.sidebar.checkbox("Cadastrar"):
         url = st.text_input('Url')
         if st.button("Gravar"):
             dados.insert(str(entidade),nome,url)
+            st.success("Registro gravado com sucesso.")
 
 if st.sidebar.checkbox("Cadastrados"):
     st.header('Lista de entidades cadastradas:')
