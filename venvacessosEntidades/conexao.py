@@ -86,4 +86,4 @@ class TransactionObject():
 
 
 bd = TransactionObject()
-bd.initDB()
+bd.delete(2)
