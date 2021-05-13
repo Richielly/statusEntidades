@@ -83,3 +83,5 @@ class TransactionObject():
         trans.execute("DELETE FROM cadastros WHERE id = ?", (id,))
         trans.persist()
         trans.disconnect()
+
+

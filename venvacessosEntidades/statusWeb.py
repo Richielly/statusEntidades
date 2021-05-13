@@ -14,7 +14,7 @@ sistemas = ['esadmin','stp','scf','srh','stm']
 
 if st.sidebar.checkbox("Cadastrar"):
     with st.beta_expander("Cadastrar Url"):
-        entidade = st.number_input("Código Entidade",max_value=999)
+        entidade = st.text_input("Código Entidade",max_chars=4)
         nome = st.text_input("Nome Entidade")
         url = st.text_input('Url')
         if st.button("Gravar"):
