@@ -4,26 +4,31 @@ from time import sleep as s
 import os.path
 from conexao import TransactionObject
 
-#with st.form(key='my_form'):
- #   text_input = st.text_input(label='Enter your name')
-  #  submit_button = st.form_submit_button(label='Submit')
-
 dados = TransactionObject()
 urls = dados.view()
 sistemas = ['esadmin','stp','scf','srh','stm']
 
 if st.sidebar.checkbox("Cadastrar"):
-    with st.beta_expander("Cadastrar Url"):
-        entidade = st.text_input("Código Entidade",max_chars=4)
-        nome = st.text_input("Nome Entidade")
-        url = st.text_input('Url')
-        if st.button("Gravar"):
-            dados.insert(str(entidade),nome,url)
+    with st.form(key='cadastrar_entidade'):
+        col1, col2 = st.beta_columns(2)
+        with col1:
+            entidade = st.text_input(label='Código Entidade')
+        with col2:
+            nome = st.text_input(label='Nome')
+        url = st.text_input(label='Url')
+        btn_gravar = st.form_submit_button(label='Gravar')
+
+    if btn_gravar:
+        if len(dados.search(entidade)) == 0:
+            text_url = url.split('/')
+            dados.insert(str(entidade), nome, text_url[0] +'//'+ text_url[2] +'/')
             st.success("Registro gravado com sucesso.")
+        else:
+            st.warning("Entidade já cadastrada.")
 
 if st.sidebar.checkbox("Cadastrados"):
     st.header('Lista de entidades cadastradas:')
-
+    col1, col2 = st.beta_columns(2)
     for url in urls:
         if st.sidebar.checkbox(str(url[1])):
             for sistema in sistemas:
