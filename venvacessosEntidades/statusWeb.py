@@ -11,6 +11,7 @@ dados = TransactionObject()
 urls = dados.view()
 sistemas = ['esadmin','stp','scf','srh','stm']
 
+
 # if st.sidebar.checkbox("Pagina"):
 #
 #     text = scraping.pagina()
@@ -113,10 +114,8 @@ if st.sidebar.checkbox("Mapa"):
     folium.Marker(
         [-25.4622, -50.6335], popup="Conder", tooltip="Irati",icon=folium.Icon(icon="cloud")).add_to(m)
 
-    # Lat: -25,4622 Lon: -50,6335
-
-    # call to render Folium map in Streamlit
+    # Criando o mapa
     folium_static(m)
-
+    # Salvando o mapa em html
     #if st.button("Salvar"):
      #   m.save('mapa-nuvens-equiplano.html')
