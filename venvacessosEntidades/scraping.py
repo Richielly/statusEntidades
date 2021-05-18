@@ -1,11 +1,12 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
+
+url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?authuser=0'
 urls=[]
 entidades=[]
 def pagina():
-    url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?authuser=0'
-
+    global url
     response = urlopen(url)
     soup = BeautifulSoup(response, "html.parser")
     all_links = soup.find_all("a")
@@ -21,19 +22,3 @@ def pagina():
 
     entidade_url = dict(zip(entidades, urls))
     return entidade_url
-
-
-# url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?authuser=0'
-#
-# response = urlopen(url)
-# soup = BeautifulSoup(response, "html.parser")
-#
-# response = urlopen(url)
-# soup = BeautifulSoup(response, "html.parser")
-# qnt = len(soup.select("small"))
-# for item in soup.select("small"):
-#     print(item.get_text())
-#
-# print("Quantidade de entidades na Nuvem: ",qnt)
-
-print(pagina())
