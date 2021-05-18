@@ -1,4 +1,5 @@
 import requests
+import scraping
 import streamlit as st
 from streamlit_folium import folium_static
 import folium
@@ -10,37 +11,57 @@ dados = TransactionObject()
 urls = dados.view()
 sistemas = ['esadmin','stp','scf','srh','stm']
 
-if st.sidebar.checkbox("Cadastrar"):
-    with st.form(key='cadastrar_entidade'):
-        col1, col2 = st.beta_columns(2)
-        with col1:
-            entidade = st.text_input(label='Código Entidade')
-        with col2:
-            nome = st.text_input(label='Nome')
-        url = st.text_input(label='Url')
-        btn_gravar = st.form_submit_button(label='Gravar')
+# if st.sidebar.checkbox("Pagina"):
+#
+#     text = scraping.pagina()
+#     st.write(text)
 
-    if btn_gravar:
-        if len(dados.search(entidade)) == 0:
-            text_url = url.split('/')
-            dados.insert(str(entidade), nome, text_url[0] +'//'+ text_url[2] +'/')
-            st.success("Registro gravado com sucesso.")
-        else:
-            st.warning("Entidade já cadastrada.")
+
+# if st.sidebar.checkbox("Cadastrar"):
+#     with st.form(key='cadastrar_entidade'):
+#         col1, col2 = st.beta_columns(2)
+#         with col1:
+#             entidade = st.text_input(label='Código Entidade')
+#         with col2:
+#             nome = st.text_input(label='Nome')
+#         url = st.text_input(label='Url')
+#         btn_gravar = st.form_submit_button(label='Gravar')
+
+    # if btn_gravar:
+    #     if len(dados.search(entidade)) == 0:
+    #         text_url = url.split('/')
+    #         dados.insert(str(entidade), nome, text_url[0] +'//'+ text_url[2] +'/')
+    #         st.success("Registro gravado com sucesso.")
+    #     else:
+    #         st.warning("Entidade já cadastrada.")
 
 if st.sidebar.checkbox("Cadastrados"):
+    page_urls = scraping.pagina()
     st.header('Lista de entidades cadastradas:')
-    col1, col2 = st.beta_columns(2)
-    for url in urls:
-        if st.sidebar.checkbox(str(url[1])):
+    st.markdown("Total de Entidades na nuvem: " + str(len(page_urls)))
+    #col1, col2 = st.beta_columns(2)
+    for entidade, url in page_urls.items():
+        if st.sidebar.checkbox(str(entidade)):
             for sistema in sistemas:
-                resposta = requests.get(str(url[3]) + sistema)
+                resposta = requests.get(str('http://'+url) +':7474/'+ sistema)
                 if (resposta.status_code == 200):
                     st.success("Sistema " + sistema.upper() + " no Ar.")
                 else:
                     st.error("Sistema " + sistema.upper() + " fora do Ar ou sem licença.")
 
+
 if st.button("Verificação Geral") :
+    page_urls = scraping.pagina()
+    st.header('Lista de entidades cadastradas:')
+    st.markdown("Total de Entidades na nuvem: "+str(len(page_urls)))
+
+    for entidade, url in page_urls.items():
+        resposta = requests.get(str('http://' + url) + ':7474/' +'esadmin')
+        if (resposta.status_code == 200):
+            st.success("Entidade " + 'http://' + url + ':7474/' +'esadmin' + " no Ar.")
+        else:
+            st.error("Entidade " + 'http://' + url + ':7474/' +'esadmin' + " fora do Ar ou sem licença.")
+
     for url in urls:
         resposta = requests.get(str(url[3]) +'esadmin')
         if (resposta.status_code == 200):
