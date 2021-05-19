@@ -1,8 +1,6 @@
 import requests
 import scraping
 import streamlit as st
-from streamlit_folium import folium_static
-import folium
 from time import sleep as s
 import os.path
 from conexao import TransactionObject
