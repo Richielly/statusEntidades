@@ -1,0 +1,2 @@
+# statusEntidades
+Verificação de entidades
