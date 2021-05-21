@@ -48,7 +48,7 @@ if st.sidebar.checkbox("Cadastrados "):
                 else:
                     st.error("Sistema " + sistema.upper() + " fora do Ar ou sem licença.")
 
-if st.button("Verificação Geral") :
+if st.button("Verificação Geral.") :
     page_urls = scraping.pagina()
     st.header('Lista de entidades cadastradas:')
     st.markdown("Total de Entidades na nuvem: "+str(len(page_urls)))
