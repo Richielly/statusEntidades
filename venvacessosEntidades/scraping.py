@@ -1,10 +1,9 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?authuser=0'
 urls=[]
 entidades=[]
 def pagina():
-    global url
+    url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?authuser=0'
     response = urlopen(url)
     soup = BeautifulSoup(response, "html.parser")
     all_links = soup.find_all("a")
