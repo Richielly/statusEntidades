@@ -1,7 +1,5 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-
-
 url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?authuser=0'
 urls=[]
 entidades=[]
