@@ -3,6 +3,8 @@ import scraping
 import streamlit as st
 from time import sleep as s
 import os.path
+from streamlit_folium import folium_static
+import folium
 from conexao import TransactionObject
 
 dados = TransactionObject()
