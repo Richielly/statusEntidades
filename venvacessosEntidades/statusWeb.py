@@ -34,7 +34,7 @@ sistemas = ['esadmin','stp','scf','srh','stm']
     #     else:
     #         st.warning("Entidade já cadastrada.")
 
-if st.sidebar.checkbox("Cadastrados"):
+if st.sidebar.checkbox("Cadastrados "):
     page_urls = scraping.pagina()
     st.header('Lista de entidades cadastradas:')
     st.markdown("Total de Entidades na nuvem: " + str(len(page_urls)))

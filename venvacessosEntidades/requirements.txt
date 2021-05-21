@@ -1,5 +1,5 @@
 streamlit-folium==0.3.0
 requests==2.25.1
 beautifulsoup4==4.9.3
-streamlit==0.81.1
 folium==0.12.1
+streamlit==0.81.1
