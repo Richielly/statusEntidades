@@ -2,6 +2,13 @@ import streamlit as st
 import requests
 import scraping
 import webbrowser
+
+st.set_page_config(
+    page_title='Pesquisa de entidades',
+    page_icon=':)'
+)
+
+
 sistemas = ['esadmin','stp','scf','srh','stm']
 col1, col2, col3 = st.beta_columns(3)
 page_urls_prefeituras = scraping.pesquisa_prefeituras()
