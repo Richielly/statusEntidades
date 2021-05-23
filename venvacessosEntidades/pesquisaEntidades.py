@@ -16,7 +16,6 @@ with col1:
         nome = str(entidade)
         if search.upper() in nome.upper():
             link = '['+entidade+']'+'('+'http://'+url+')'
-
             st.markdown(str(link), unsafe_allow_html=True)
             # if st.button(entidade,entidade):
             #     webbrowser.open_new_tab('http://'+url)
@@ -25,12 +24,12 @@ with col2:
     for camara, url_camara in page_urls_camaras.items():
         nome_camara = str(camara)
         if search.upper() in nome_camara.upper():
-            if st.button(camara,camara):
-                webbrowser.open_new_tab('http://'+url_camara)
+            link2 = '[' + camara + ']' + '(' + 'http://' + url_camara + ')'
+            st.markdown(str(link2), unsafe_allow_html=True)
 with col3:
     st.header('Outras')
     for outras, url_outras in page_urls_outras.items():
         nome_outras = str(outras)
         if search.upper() in nome_outras.upper():
-            if st.button(outras,outras):
-                webbrowser.open_new_tab('http://'+url_outras)
+            link3 = '[' + outras + ']' + '(' + 'http://' + url_outras + ')'
+            st.markdown(str(link3), unsafe_allow_html=True)
