@@ -8,7 +8,7 @@ page_urls_prefeituras = scraping.pesquisa_prefeituras()
 page_urls_camaras = scraping.pesquisa_camaras()
 page_urls_outras = scraping.pesquisa_outras()
 st.sidebar.title("Pesquise a entidade pelo número ou nome.")
-search = st.sidebar.text_input("Pesquisar Entidade")
+search = st.sidebar.text_input("Pesquisar")
 
 with col1:
     st.header('Prefeituras')
