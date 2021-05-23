@@ -10,6 +10,9 @@ page_urls_outras = scraping.pesquisa_outras()
 st.sidebar.title("Pesquise a entidade pelo número ou nome.")
 search = st.sidebar.text_input("Pesquisar")
 
+link = '[GitHub](http://github.com)'
+st.markdown(link, unsafe_allow_html=True)
+
 with col1:
     st.header('Prefeituras')
     for entidade, url in page_urls_prefeituras.items():
