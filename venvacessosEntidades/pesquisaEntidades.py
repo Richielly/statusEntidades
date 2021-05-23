@@ -10,16 +10,16 @@ page_urls_outras = scraping.pesquisa_outras()
 st.sidebar.title("Pesquise a entidade pelo número ou nome.")
 search = st.sidebar.text_input("Pesquisar")
 
-link = '[GitHub](http://github.com)'
-st.markdown(link, unsafe_allow_html=True)
-
 with col1:
     st.header('Prefeituras')
     for entidade, url in page_urls_prefeituras.items():
         nome = str(entidade)
         if search.upper() in nome.upper():
-            if st.button(entidade,entidade):
-                webbrowser.open_new_tab('http://'+url)
+            link = '['+entidade+']'+'('+'http://'+url+')'
+
+            st.markdown(str(link), unsafe_allow_html=True)
+            # if st.button(entidade,entidade):
+            #     webbrowser.open_new_tab('http://'+url)
 with col2:
     st.header('Câmaras')
     for camara, url_camara in page_urls_camaras.items():
