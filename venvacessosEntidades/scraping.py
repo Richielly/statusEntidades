@@ -40,8 +40,6 @@ def pesquisa_prefeituras(url = 'https://sites.google.com/view/entidade/prefeitur
             urls.append(url[1].split('&sa')[0].replace('%2F','/').replace('%3A',':'))
         except:
             "Não encontado"
-    print(len(entidades))
-    print(len(urls))
     entidade_url = dict(zip(entidades, urls))
     return entidade_url
 
@@ -60,8 +58,6 @@ def pesquisa_camaras(url = 'https://sites.google.com/view/entidade/camaras?authu
             urls2.append(url2[1].split('&sa')[0].replace('%2F','/').replace('%3A',':'))
         except:
             "Não encontado"
-    print(len(entidades2))
-    print(len(urls2))
     entidade_url2 = dict(zip(entidades2, urls2))
     return entidade_url2
 
@@ -80,7 +76,5 @@ def pesquisa_outras(url = 'https://sites.google.com/view/entidade/outras?authuse
             urls3.append(url3[1].split('&sa')[0].replace('%2F','/').replace('%3A',':'))
         except:
             "Não encontado"
-    print(len(entidades3))
-    print(len(urls3))
     entidade_url3 = dict(zip(entidades3, urls3))
     return entidade_url3
