@@ -7,6 +7,7 @@ col1, col2, col3 = st.beta_columns(3)
 page_urls_prefeituras = scraping.pesquisa_prefeituras()
 page_urls_camaras = scraping.pesquisa_camaras()
 page_urls_outras = scraping.pesquisa_outras()
+st.sidebar.title("Pesquise a entidade pelo número ou nome.")
 search = st.sidebar.text_input("Pesquisar Entidade")
 
 with col1:
