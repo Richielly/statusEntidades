@@ -1,11 +1,13 @@
 import requests
 import scraping
 import streamlit as st
+import time as t
 from time import sleep as s
 import os.path
 from streamlit_folium import folium_static
 import folium
 from conexao import TransactionObject
+
 
 dados = TransactionObject()
 urls = dados.view()
@@ -15,25 +17,6 @@ sistemas = ['esadmin','stp','scf','srh','stm']
 #
 #     text = scraping.pagina()
 #     st.write(text)
-
-
-# if st.sidebar.checkbox("Cadastrar"):
-#     with st.form(key='cadastrar_entidade'):
-#         col1, col2 = st.beta_columns(2)
-#         with col1:
-#             entidade = st.text_input(label='Código Entidade')
-#         with col2:
-#             nome = st.text_input(label='Nome')
-#         url = st.text_input(label='Url')
-#         btn_gravar = st.form_submit_button(label='Gravar')
-
-    # if btn_gravar:
-    #     if len(dados.search(entidade)) == 0:
-    #         text_url = url.split('/')
-    #         dados.insert(str(entidade), nome, text_url[0] +'//'+ text_url[2] +'/')
-    #         st.success("Registro gravado com sucesso.")
-    #     else:
-    #         st.warning("Entidade já cadastrada.")
 
 if st.sidebar.checkbox("Cadastrados "):
     page_urls = scraping.pagina()
@@ -59,18 +42,20 @@ if st.button("Verificação Geral.") :
     st.markdown("Total de Entidades na nuvem: "+str(len(page_urls)))
 
     for entidade, url in page_urls.items():
+        start = t.time()
         try:
             resposta = requests.get(str('http://' + url) + ':7474/' + 'esadmin')
             if (resposta.status_code == 200):
-                st.success("Entidade " + 'http://' + url + ':7474/' + 'esadmin' + " no Ar.")
+                st.success('http://' + url + ':7474/' + 'esadmin' + " ~ Ativa,  consulta feita em - " + str(round((t.time() - start),2)) + " segundos.")
             else:
-                st.error("Entidade " + 'http://' + url + ':7474/' + 'esadmin' + " fora do Ar ou sem licença.")
+                st.error('http://' + url + ':7474/' + 'esadmin' + " ~ Inativa,  consulta feita em - " + str(round((t.time() - start),2)) + " segundos.")
         except:
+            start = t.time()
             resposta = requests.get(str('http://' + url) + ':8080/' + 'esadmin')
             if (resposta.status_code == 200):
-                st.success("Entidade " + 'http://' + url + ':8080/' +'esadmin' + " no Ar.")
+                st.success("Entidade " + 'http://' + url + ':8080/' +'esadmin' + " ~ Ativa,  consulta feita em - " + str(round((t.time() - start),2)) + " segundos.")
             else:
-                st.error("Entidade " + 'http://' + url + ':8080/' +'esadmin' + " fora do Ar ou sem licença.")
+                st.error("Entidade " + 'http://' + url + ':8080/' +'esadmin' + " ~ Inativa,  consulta feita em - " + str(round((t.time() - start),2)) + " segundos.")
 
     for url in urls:
         resposta = requests.get(str(url[3]) +'esadmin')
@@ -144,4 +129,4 @@ if st.sidebar.checkbox("Mapa"):
     folium_static(m)
     # Salvando o mapa em html
     #if st.button("Salvar"):
-    # m.save('mapa-nuvens-equiplano_19102021.html')
+    #m.save('mapa-nuvens-equiplano_19102021.html')
