@@ -15,7 +15,9 @@ def pagina(url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?aut
         linha = link.get("href")
         url = str(linha).split("%3A%2F%2F")
         try:
-            urls.append((url[1].split("%3A7474%2F")[0]))
+            #urls.append((url[1].split("%3A7474%2F")[0])) #funcionando 19/10/2021
+            urls.append((url[1].split("%3A")[0]))
+            # urls.append((url[1].split("%3A8080%2F")[0]))
         except:
             "Não encontado"
     for item in soup.select("small"):

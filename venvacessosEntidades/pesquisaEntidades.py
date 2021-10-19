@@ -5,7 +5,7 @@ import webbrowser
 
 st.set_page_config(
     page_title='Pesquisa de entidades',
-    page_icon=':)'
+    page_icon='🏦'
 )
 
 
