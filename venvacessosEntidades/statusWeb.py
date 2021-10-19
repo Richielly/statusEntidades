@@ -126,7 +126,7 @@ if st.sidebar.checkbox("Mapa"):
     folium.Marker(
         [-25.573220969641085, -51.07583650076976], popup="Câmara", tooltip="Inácio Martins",icon=folium.Icon(icon="cloud")).add_to(m)
     folium.Marker(
-        [-22.78106273417823, -51.2312464908427], popup="Prefeitura", tooltip="Fernandes Pinheiros", icon=folium.Icon(icon="cloud")).add_to(m)
+        [-22.78106273417823, -51.2312464908427], popup="Prefeitura", tooltip="Alvorada do Sul", icon=folium.Icon(icon="cloud")).add_to(m)
     folium.Marker(
         [-24.247088185940257, -49.705674574292246], popup="Câmara", tooltip="Jaguariaiva", icon=folium.Icon(icon="cloud")).add_to(m)
     folium.Marker(
