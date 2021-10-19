@@ -85,5 +85,5 @@ class TransactionObject():
         trans.disconnect()
 
 
-#bd = TransactionObject()
-#bd.initDB()
+bd = TransactionObject()
+bd.initDB()
