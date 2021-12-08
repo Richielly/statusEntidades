@@ -1,11 +1,21 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+from time import sleep as s
 urls=[]
 entidades=[]
 urls2=[]
 entidades2=[]
 urls3=[]
 entidades3=[]
+
+def versao(url_entidade):
+    response = urlopen(url_entidade + '/adminsecurity.loadLogin.logic')
+    soup = BeautifulSoup(response, "html.parser")
+    version = soup.find('span').text
+    version = str(version).split("admin ")
+
+    return version[1]
+
 def pagina(url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?authuser=0'):
     #url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?authuser=0'
     response = urlopen(url)
@@ -25,7 +35,6 @@ def pagina(url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?aut
 
     entidade_url = dict(zip(entidades, urls))
     return entidade_url
-
 
 def pesquisa_prefeituras(url = 'https://sites.google.com/view/entidade/prefeituras?authuser=0'):
     response = urlopen(url)
