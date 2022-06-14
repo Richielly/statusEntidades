@@ -17,7 +17,7 @@ def versao(url_entidade):
     return version[1]
 
 def pagina(url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?authuser=0'):
-    #url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?authuser=0'
+
     response = urlopen(url)
     soup = BeautifulSoup(response, "html.parser")
     all_links = soup.find_all("a")
@@ -25,11 +25,9 @@ def pagina(url = 'https://sites.google.com/view/entidade/p%C3%A1gina-inicial?aut
         linha = link.get("href")
         url = str(linha).split("%3A%2F%2F")
         try:
-            #urls.append((url[1].split("%3A7474%2F")[0])) #funcionando 19/10/2021
             urls.append((url[1].split("%3A")[0]))
-            # urls.append((url[1].split("%3A8080%2F")[0]))
         except:
-            "Não encontado"
+            "Não encontrado"
     for item in soup.select("small"):
         entidades.append(item.get_text())
 
@@ -40,18 +38,20 @@ def pesquisa_prefeituras(url = 'https://sites.google.com/view/entidade/prefeitur
     response = urlopen(url)
     soup = BeautifulSoup(response, "html.parser")
     all_links = soup.find_all("a")
-
+    i = 0
     for link in all_links:
         entidade = link.get("aria-label")
         linha = link.get("href")
         url = str(linha).split("%3A%2F%2F")
+
         try:
             if entidade != None:
                 entidades.append(entidade)
-            urls.append(url[1].split('&sa')[0].replace('%2F','/').replace('%3A',':'))
+                urls.append(url[1].split('&sa')[0].replace('%2F','/').replace('%3A',':'))
         except:
-            "Não encontado"
+            "Não encontrado"
     entidade_url = dict(zip(entidades, urls))
+
     return entidade_url
 
 def pesquisa_camaras(url = 'https://sites.google.com/view/entidade/camaras?authuser=0'):
@@ -66,9 +66,9 @@ def pesquisa_camaras(url = 'https://sites.google.com/view/entidade/camaras?authu
         try:
             if entidade2 != None:
                 entidades2.append(entidade2)
-            urls2.append(url2[1].split('&sa')[0].replace('%2F','/').replace('%3A',':'))
+                urls2.append(url2[1].split('&sa')[0].replace('%2F','/').replace('%3A',':'))
         except:
-            "Não encontado"
+            "Não encontrado"
     entidade_url2 = dict(zip(entidades2, urls2))
     return entidade_url2
 
@@ -84,8 +84,8 @@ def pesquisa_outras(url = 'https://sites.google.com/view/entidade/outras?authuse
         try:
             if entidade3 != None:
                 entidades3.append(entidade3)
-            urls3.append(url3[1].split('&sa')[0].replace('%2F','/').replace('%3A',':'))
+                urls3.append(url3[1].split('&sa')[0].replace('%2F','/').replace('%3A',':'))
         except:
-            "Não encontado"
+            "Não encontrado"
     entidade_url3 = dict(zip(entidades3, urls3))
     return entidade_url3
